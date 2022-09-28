@@ -4,6 +4,14 @@
 
 ![image](https://user-images.githubusercontent.com/91734031/192673043-42c46466-1230-461e-b7b1-60c819ef2a5a.png)
 
+# Benefits of Design Pattern
+
+* Saves time - If we apply design patterns wisely, we may save time since they are previously specified and offer an industry standard way to solving a recurrent problem.
+* Reusability and Robustness - Utilizing design patterns encourages reusability, which results in code that is more reliable and more maintained. It aids in lowering the software product's total cost of ownership (TCO).
+* Easy to understand and easy to debug - Our code is simple to comprehend and debug since design patterns have already been established. It promotes quicker growth and makes it simple for new team members to comprehend.
+* Abstraction is maintained - Since the code will be well-maintained and organized, a high degree of abstraction is anticipated.
+* Extensible - Massive code will be modularized and simple to extend. One might successfully realize elasticity. Utilizing the right design patterns makes it simple to write and add new code.
+
 # What We Are Required To Do
 
 To test our understanding of Standards & Patterns, we will be given an existing ASP.NET Core MVC Web Application that will need
@@ -22,14 +30,6 @@ to be enhanced and improved. We are expected to grasp architectural patterns as 
 
 ![Types of design Patterns](https://user-images.githubusercontent.com/91734031/192675428-6b03adcf-9066-4314-ab2a-b2a9d83419ce.jpeg)
 
-
-# Benefits of Design Pattern
-
-* Saves time - If we apply design patterns wisely, we may save time since they are previously specified and offer an industry standard way to solving a recurrent problem.
-* Reusability and Robustness - Utilizing design patterns encourages reusability, which results in code that is more reliable and more maintained. It aids in lowering the software product's total cost of ownership (TCO).
-* Easy to understand and easy to debug - Our code is simple to comprehend and debug since design patterns have already been established. It promotes quicker growth and makes it simple for new team members to comprehend.
-* Abstraction is maintained - Since the code will be well-maintained and organized, a high degree of abstraction is anticipated.
-* Extensible - Massive code will be modularized and simple to extend. One might successfully realize elasticity. Utilizing the right design patterns makes it simple to write and add new code.
 
 # How Will The Project Work
 
