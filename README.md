@@ -31,3 +31,6 @@ to be enhanced and improved. We are expected to grasp architectural patterns as 
 * Abstraction is maintained - Since the code will be well-maintained and organized, a high degree of abstraction is anticipated.
 * Extensible - Massive code will be modularized and simple to extend. One might successfully realize elasticity. Utilizing the right design patterns makes it simple to write and add new code.
 
+# How Will The Project Work
+
+We will work on an existing ASP.NET Core MVC Web Application and we need to implement our own methods such as delete, update, create that will work on each controllerm separately. When we run the app, we must be able to implement changes on the database without any errors. The Web App will use database that is stored on cloud as this will allow only permitted personel to conduct any changes on the databse.
