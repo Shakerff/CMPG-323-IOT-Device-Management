@@ -17,6 +17,11 @@ namespace DeviceManagement_WebApp.Repository
         {
             _context.Set<T>().Add(entity);
         }
+        public void Create(T entity)
+        {
+            _context.Set<T>().Add(entity);
+            _context.SaveChanges();
+        }
         public void AddRange(IEnumerable<T> entities)
         {
             _context.Set<T>().AddRange(entities);
@@ -28,6 +33,16 @@ namespace DeviceManagement_WebApp.Repository
         public IEnumerable<T> GetAll()
         {
             return _context.Set<T>().ToList();
+        }
+        public void Modify(T entity)
+        {
+            _context.Update(entity);
+            _context.SaveChanges();
+        }
+        public void Delete(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+            _context.SaveChanges();
         }
         public T GetById(Guid? id)
         {

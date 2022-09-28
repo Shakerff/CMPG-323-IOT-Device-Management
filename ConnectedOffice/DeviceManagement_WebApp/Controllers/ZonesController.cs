@@ -22,13 +22,13 @@ namespace DeviceManagement_WebApp.Controllers
             _zoneRepository = zoneRepository;
         }
 
-        // GET: Zones
+        // GET zones repository
         public async Task<IActionResult> Index()
         {
             return View(_zoneRepository.GetAll());
         }
 
-        // GET: Zones/Details/5
+        // This method checks if the details in Zone are present
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -51,21 +51,18 @@ namespace DeviceManagement_WebApp.Controllers
             return View();
         }
 
-        // POST: Zones/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Create Zones 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ZoneId,ZoneName,ZoneDescription,DateCreated")] Zone zone)
         {
             zone.ZoneId = Guid.NewGuid();
-            _zoneRepository.Add(zone);
-            await _context.SaveChangesAsync();
+            _zoneRepository.Create(zone);
 
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: Zones/Edit/5
+        // This Method retrieves the data in Zones
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -73,7 +70,7 @@ namespace DeviceManagement_WebApp.Controllers
                 return NotFound();
             }
 
-            var zone = await _context.Zone.FindAsync(id);
+            var zone = _zoneRepository.GetById(id);
             if (zone == null)
             {
                 return NotFound();
@@ -81,9 +78,7 @@ namespace DeviceManagement_WebApp.Controllers
             return View(zone);
         }
 
-        // POST: Zones/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // This method edits the data in Zones
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [Bind("ZoneId,ZoneName,ZoneDescription,DateCreated")] Zone zone)
@@ -95,8 +90,7 @@ namespace DeviceManagement_WebApp.Controllers
 
             try
             {
-                _context.Update(zone);
-                await _context.SaveChangesAsync();
+                _zoneRepository.Modify(zone);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -113,7 +107,7 @@ namespace DeviceManagement_WebApp.Controllers
 
         }
 
-        // GET: Zones/Delete/5
+        // //Checks if the file to be deleted does exist
         public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -121,8 +115,7 @@ namespace DeviceManagement_WebApp.Controllers
                 return NotFound();
             }
 
-            var zone = await _context.Zone
-                .FirstOrDefaultAsync(m => m.ZoneId == id);
+            var zone = _zoneRepository.GetById(id);
             if (zone == null)
             {
                 return NotFound();
@@ -131,20 +124,29 @@ namespace DeviceManagement_WebApp.Controllers
             return View(zone);
         }
 
-        // POST: Zones/Delete/5
+        //Deletes the selected file 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var zone = await _context.Zone.FindAsync(id);
-            _context.Zone.Remove(zone);
-            await _context.SaveChangesAsync();
+            var zone = _zoneRepository.GetById(id);
+            _zoneRepository.Delete(zone);
             return RedirectToAction(nameof(Index));
         }
 
         private bool ZoneExists(Guid id)
         {
-            return _context.Zone.Any(e => e.ZoneId == id);
+            var zone = _zoneRepository.GetById(id);
+
+            if (zone == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
+    
 }
